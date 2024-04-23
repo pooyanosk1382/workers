@@ -119,7 +119,6 @@ root = tk.Tk()
 root.title("Workers situation")
 root.geometry("800x800")
 
-# Create StringVar variables for each line
 line1 = tk.StringVar()
 line2 = tk.StringVar()
 line3 = tk.StringVar()
@@ -138,23 +137,22 @@ image6 = PhotoImage(file="worker6.png").subsample(40, 40)
 image7 = PhotoImage(file="worker7.png").subsample(40, 40)
 image8 = PhotoImage(file="worker8.png").subsample(40, 40)
 
-# Create labels for each line with padding
 label1 = tk.Label(root, image=image1, textvariable=line1, font=("Arial", 14), compound="left")
-label1.pack(pady=10)  # Add vertical padding
+label1.pack(pady=10)
 label2 = tk.Label(root, image=image2, textvariable=line2, font=("Arial", 14), compound="left")
-label2.pack(pady=10)  # Add vertical padding
+label2.pack(pady=10)
 label3 = tk.Label(root, image=image3, textvariable=line3, font=("Arial", 14), compound="left")
-label3.pack(pady=10)  # Add vertical padding
+label3.pack(pady=10)
 label4 = tk.Label(root, image=image4, textvariable=line4, font=("Arial", 14), compound="left")
-label4.pack(pady=10)  # Add vertical padding
+label4.pack(pady=10)
 label5 = tk.Label(root, image=image5, textvariable=line5, font=("Arial", 14), compound="left")
-label5.pack(pady=10)  # Add vertical padding
+label5.pack(pady=10)
 label6 = tk.Label(root, image=image6, textvariable=line6, font=("Arial", 14), compound="left")
-label6.pack(pady=10)  # Add vertical padding
+label6.pack(pady=10)
 label7 = tk.Label(root, image=image7, textvariable=line7, font=("Arial", 14), compound="left")
-label7.pack(pady=10)  # Add vertical padding
+label7.pack(pady=10)
 label8 = tk.Label(root, image=image8, textvariable=line8, font=("Arial", 14), compound="left")
-label8.pack(pady=10)  # Add vertical padding
+label8.pack(pady=10)
 
 
 worker1 = Workers('1', 5)
