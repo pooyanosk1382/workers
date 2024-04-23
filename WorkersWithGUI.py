@@ -26,6 +26,23 @@ class Workers(threading.Thread):
             self.loading()
             self.put()
             currentTime = time.time()
+        match self.name:
+            case '1':
+                line1.set(str(self.number))
+            case '2':
+                line2.set(str(self.number))
+            case '3':
+                line3.set(str(self.number))
+            case '4':
+                line4.set(str(self.number))
+            case '5':
+                line5.set(str(self.number))
+            case '6':
+                line6.set(str(self.number))
+            case '7':
+                line7.set(str(self.number))
+            case '8':
+                line8.set(str(self.number))
 
     def eating(self):
         global eatingWorkers
@@ -48,8 +65,6 @@ class Workers(threading.Thread):
                 line7.set('worker 7 is eating')
             case '8':
                 line8.set('worker 8 is eating')
-        print('worker ' + self.name + ' is eating.')
-        print('There are ' + str(eatingWorkers) + ' workers that are eating')
         time.sleep(t/16)
         eatingWorkers -= 1
 
@@ -72,21 +87,19 @@ class Workers(threading.Thread):
                 line7.set('worker 7 is putting and backing to ship')
             case '8':
                 line8.set('worker 8 is putting and backing to ship')
-        print('worker ' + self.name + ' is putting.')
         store.release()
         self.number += 3
-        print('worker ' + self.name + ' is backing to ship.')
         time.sleep(self.speed)
 
     def loading(self):
         ship.acquire()
         match self.name:
             case '1':
-                line1.set('worker 1 is loading and going to store')
+                line1.set('worker 1 is loaded and going to store')
             case '2':
-                line2.set('worker 2 is loading and going to store')
+                line2.set('worker 2 is loaded and going to store')
             case '3':
-                line3.set('worker 3 is loading and going to store')
+                line3.set('worker 3 is loaded and going to store')
             case '4':
                 line4.set('worker 4 is loading and going to store')
             case '5':
@@ -97,15 +110,12 @@ class Workers(threading.Thread):
                 line7.set('worker 7 is loading and going to store')
             case '8':
                 line8.set('worker 8 is loading and going to store')
-        print('worker ' + self.name + ' is loading.')
         ship.release()
-        print('worker ' + self.name + ' is going to store.')
         time.sleep(self.speed)
 
 
-# Create the main window
 root = tk.Tk()
-root.title("Real-Time GUI with Eight Lines")
+root.title("Workers situation")
 root.geometry("600x400")
 
 # Create StringVar variables for each line
@@ -119,21 +129,21 @@ line7 = tk.StringVar()
 line8 = tk.StringVar()
 
 # Create labels for each line with padding
-label1 = tk.Label(root, textvariable=line1)
+label1 = tk.Label(root, textvariable=line1, font=("Arial", 14))
 label1.pack(pady=10)  # Add vertical padding
-label2 = tk.Label(root, textvariable=line2)
+label2 = tk.Label(root, textvariable=line2, font=("Arial", 14))
 label2.pack(pady=10)  # Add vertical padding
-label3 = tk.Label(root, textvariable=line3)
+label3 = tk.Label(root, textvariable=line3, font=("Arial", 14))
 label3.pack(pady=10)  # Add vertical padding
-label4 = tk.Label(root, textvariable=line4)
+label4 = tk.Label(root, textvariable=line4, font=("Arial", 14))
 label4.pack(pady=10)  # Add vertical padding
-label5 = tk.Label(root, textvariable=line5)
+label5 = tk.Label(root, textvariable=line5, font=("Arial", 14))
 label5.pack(pady=10)  # Add vertical padding
-label6 = tk.Label(root, textvariable=line6)
+label6 = tk.Label(root, textvariable=line6, font=("Arial", 14))
 label6.pack(pady=10)  # Add vertical padding
-label7 = tk.Label(root, textvariable=line7)
+label7 = tk.Label(root, textvariable=line7, font=("Arial", 14))
 label7.pack(pady=10)  # Add vertical padding
-label8 = tk.Label(root, textvariable=line8)
+label8 = tk.Label(root, textvariable=line8, font=("Arial", 14))
 label8.pack(pady=10)  # Add vertical padding
 
 
