@@ -5,7 +5,7 @@ startTime = time.time()
 store = threading.RLock()
 ship = threading.RLock()
 eatingWorkers = 0
-t = 10
+t = 60
 
 
 class Workers(threading.Thread):
@@ -49,14 +49,14 @@ class Workers(threading.Thread):
         return 0
 
 
-worker1 = Workers('1', 0.2)
-worker2 = Workers('2', 0.1)
-worker3 = Workers('3', 0.15)
-worker4 = Workers('4', 0.17)
-worker5 = Workers('5', 0.22)
-worker6 = Workers('6', 0.09)
-worker7 = Workers('7', 0.13)
-worker8 = Workers('8', 0.23)
+worker1 = Workers('1', 2)
+worker2 = Workers('2', 3)
+worker3 = Workers('3', 1)
+worker4 = Workers('4', 1.5)
+worker5 = Workers('5', 2.27)
+worker6 = Workers('6', 3.46)
+worker7 = Workers('7', 2.98)
+worker8 = Workers('8', 1.69)
 
 worker1.start()
 worker2.start()
@@ -75,3 +75,12 @@ worker5.join()
 worker6.join()
 worker7.join()
 worker8.join()
+
+print(worker1.number)
+print(worker2.number)
+print(worker3.number)
+print(worker4.number)
+print(worker5.number)
+print(worker6.number)
+print(worker7.number)
+print(worker8.number)
