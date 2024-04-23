@@ -17,19 +17,23 @@ class Workers(threading.Thread):
         self.eaten = False
 
     def run(self) -> None:
+        global eatingWorkers
         currentTime = time.time()
         while currentTime - startTime < t:
-            if currentTime - startTime >= t / 2 and self.eaten is False:
+            if currentTime - startTime >= t / 2 and self.eaten is False and eatingWorkers < 4:
                 self.eating()
             self.loading()
             self.put()
             currentTime = time.time()
 
     def eating(self):
+        global eatingWorkers
+        eatingWorkers += 1
         self.eaten = True
         print('worker ' + self.name + ' is eating.')
+        print('There are ' + str(eatingWorkers) + ' workers that are eating')
         time.sleep(t/16)
-        return 0
+        eatingWorkers -= 1
 
     def put(self):
         store.acquire()
@@ -38,7 +42,6 @@ class Workers(threading.Thread):
         self.number += 3
         print('worker ' + self.name + ' is backing to ship.')
         time.sleep(self.speed)
-        return 0
 
     def loading(self):
         ship.acquire()
@@ -46,7 +49,6 @@ class Workers(threading.Thread):
         ship.release()
         print('worker ' + self.name + ' is going to store.')
         time.sleep(self.speed)
-        return 0
 
 
 worker1 = Workers('1', 2)
