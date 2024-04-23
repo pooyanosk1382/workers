@@ -31,7 +31,23 @@ class Workers(threading.Thread):
         global eatingWorkers
         eatingWorkers += 1
         self.eaten = True
-        line1.set(f"Line 1: Event 1 occurred")
+        match self.name:
+            case '1':
+                line1.set('worker 1 is eating')
+            case '2':
+                line2.set('worker 2 is eating')
+            case '3':
+                line3.set('worker 3 is eating')
+            case '4':
+                line4.set('worker 4 is eating')
+            case '5':
+                line5.set('worker 5 is eating')
+            case '6':
+                line6.set('worker 6 is eating')
+            case '7':
+                line7.set('worker 7 is eating')
+            case '8':
+                line8.set('worker 8 is eating')
         print('worker ' + self.name + ' is eating.')
         print('There are ' + str(eatingWorkers) + ' workers that are eating')
         time.sleep(t/16)
@@ -39,6 +55,23 @@ class Workers(threading.Thread):
 
     def put(self):
         store.acquire()
+        match self.name:
+            case '1':
+                line1.set('worker 1 is putting and backing to ship')
+            case '2':
+                line2.set('worker 2 is putting and backing to ship')
+            case '3':
+                line3.set('worker 3 is putting and backing to ship')
+            case '4':
+                line4.set('worker 4 is putting and backing to ship')
+            case '5':
+                line5.set('worker 5 is putting and backing to ship')
+            case '6':
+                line6.set('worker 6 is putting and backing to ship')
+            case '7':
+                line7.set('worker 7 is putting and backing to ship')
+            case '8':
+                line8.set('worker 8 is putting and backing to ship')
         print('worker ' + self.name + ' is putting.')
         store.release()
         self.number += 3
@@ -47,26 +80,28 @@ class Workers(threading.Thread):
 
     def loading(self):
         ship.acquire()
+        match self.name:
+            case '1':
+                line1.set('worker 1 is loading and going to store')
+            case '2':
+                line2.set('worker 2 is loading and going to store')
+            case '3':
+                line3.set('worker 3 is loading and going to store')
+            case '4':
+                line4.set('worker 4 is loading and going to store')
+            case '5':
+                line5.set('worker 5 is loading and going to store')
+            case '6':
+                line6.set('worker 6 is loading and going to store')
+            case '7':
+                line7.set('worker 7 is loading and going to store')
+            case '8':
+                line8.set('worker 8 is loading and going to store')
         print('worker ' + self.name + ' is loading.')
         ship.release()
         print('worker ' + self.name + ' is going to store.')
         time.sleep(self.speed)
 
-
-# Function to update the lines
-def update_lines():
-    # Simulating backend events
-    # You can replace this with your actual backend event handling logic
-    # For demonstration purposes, I'm just updating the lines with dummy data
-    line2.set(f"Line 2: Event 2 occurred")
-    line3.set(f"Line 3: Event 3 occurred")
-    line4.set(f"Line 4: Event 4 occurred")
-    line5.set(f"Line 5: Event 5 occurred")
-    line6.set(f"Line 6: Event 6 occurred")
-    line7.set(f"Line 7: Event 7 occurred")
-    line8.set(f"Line 8: Event 8 occurred")
-    # Schedule the update after 1000ms (1 second)
-    root.after(1000, update_lines)
 
 # Create the main window
 root = tk.Tk()
@@ -101,11 +136,6 @@ label7.pack(pady=10)  # Add vertical padding
 label8 = tk.Label(root, textvariable=line8)
 label8.pack(pady=10)  # Add vertical padding
 
-# Start the update loop
-update_lines()
-
-# Run the main loop
-
 
 worker1 = Workers('1', 5)
 worker2 = Workers('2', 7)
@@ -126,6 +156,7 @@ worker7.start()
 worker8.start()
 
 root.mainloop()
+
 worker1.join()
 worker2.join()
 worker3.join()
