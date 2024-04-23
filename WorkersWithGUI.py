@@ -118,6 +118,12 @@ class Workers(threading.Thread):
 root = tk.Tk()
 root.title("Workers situation")
 root.geometry("800x800")
+root.iconphoto(True, tk.PhotoImage(file="ship.png"))
+background_image = tk.PhotoImage(file="ship.png")
+
+# Create a label to display the background image
+background_label = tk.Label(root, image=background_image)
+background_label.place(x=0, y=0, relwidth=1, relheight=1)
 
 line1 = tk.StringVar()
 line2 = tk.StringVar()
