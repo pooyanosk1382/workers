@@ -19,7 +19,7 @@ class Workers(threading.Thread):
     def run(self) -> None:
         global eatingWorkers
         currentTime = time.time()
-        while currentTime - startTime < t:
+        while currentTime - startTime < t + t/16:
             if currentTime - startTime >= t / 2 and self.eaten is False and eatingWorkers < 4:
                 self.eating()
             self.loading()
