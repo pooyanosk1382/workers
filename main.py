@@ -51,14 +51,14 @@ class Workers(threading.Thread):
         time.sleep(self.speed)
 
 
-worker1 = Workers('1', 2)
-worker2 = Workers('2', 3)
-worker3 = Workers('3', 1)
-worker4 = Workers('4', 1.5)
-worker5 = Workers('5', 2.27)
-worker6 = Workers('6', 3.46)
-worker7 = Workers('7', 2.98)
-worker8 = Workers('8', 1.69)
+worker1 = Workers('1', 5)
+worker2 = Workers('2', 7)
+worker3 = Workers('3', 9)
+worker4 = Workers('4', 6)
+worker5 = Workers('5', 6.5)
+worker6 = Workers('6', 4.75)
+worker7 = Workers('7', 8)
+worker8 = Workers('8', 6)
 
 worker1.start()
 worker2.start()
