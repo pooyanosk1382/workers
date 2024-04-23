@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import PhotoImage
 import threading
 import time
 
@@ -116,7 +117,7 @@ class Workers(threading.Thread):
 
 root = tk.Tk()
 root.title("Workers situation")
-root.geometry("600x400")
+root.geometry("800x800")
 
 # Create StringVar variables for each line
 line1 = tk.StringVar()
@@ -128,22 +129,31 @@ line6 = tk.StringVar()
 line7 = tk.StringVar()
 line8 = tk.StringVar()
 
+image1 = PhotoImage(file="worker1.png").subsample(40, 40)
+image2 = PhotoImage(file="worker2.png").subsample(40, 40)
+image3 = PhotoImage(file="worker3.png").subsample(40, 40)
+image4 = PhotoImage(file="worker4.png").subsample(40, 40)
+image5 = PhotoImage(file="worker5.png").subsample(40, 40)
+image6 = PhotoImage(file="worker6.png").subsample(40, 40)
+image7 = PhotoImage(file="worker7.png").subsample(40, 40)
+image8 = PhotoImage(file="worker8.png").subsample(40, 40)
+
 # Create labels for each line with padding
-label1 = tk.Label(root, textvariable=line1, font=("Arial", 14))
+label1 = tk.Label(root, image=image1, textvariable=line1, font=("Arial", 14), compound="left")
 label1.pack(pady=10)  # Add vertical padding
-label2 = tk.Label(root, textvariable=line2, font=("Arial", 14))
+label2 = tk.Label(root, image=image2, textvariable=line2, font=("Arial", 14), compound="left")
 label2.pack(pady=10)  # Add vertical padding
-label3 = tk.Label(root, textvariable=line3, font=("Arial", 14))
+label3 = tk.Label(root, image=image3, textvariable=line3, font=("Arial", 14), compound="left")
 label3.pack(pady=10)  # Add vertical padding
-label4 = tk.Label(root, textvariable=line4, font=("Arial", 14))
+label4 = tk.Label(root, image=image4, textvariable=line4, font=("Arial", 14), compound="left")
 label4.pack(pady=10)  # Add vertical padding
-label5 = tk.Label(root, textvariable=line5, font=("Arial", 14))
+label5 = tk.Label(root, image=image5, textvariable=line5, font=("Arial", 14), compound="left")
 label5.pack(pady=10)  # Add vertical padding
-label6 = tk.Label(root, textvariable=line6, font=("Arial", 14))
+label6 = tk.Label(root, image=image6, textvariable=line6, font=("Arial", 14), compound="left")
 label6.pack(pady=10)  # Add vertical padding
-label7 = tk.Label(root, textvariable=line7, font=("Arial", 14))
+label7 = tk.Label(root, image=image7, textvariable=line7, font=("Arial", 14), compound="left")
 label7.pack(pady=10)  # Add vertical padding
-label8 = tk.Label(root, textvariable=line8, font=("Arial", 14))
+label8 = tk.Label(root, image=image8, textvariable=line8, font=("Arial", 14), compound="left")
 label8.pack(pady=10)  # Add vertical padding
 
 
