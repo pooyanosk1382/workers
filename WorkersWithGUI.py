@@ -28,21 +28,21 @@ class Workers(threading.Thread):
             currentTime = time.time()
         match self.name:
             case '1':
-                line1.set(str(self.number))
+                line1.set('number of boxes of worker 1 is ' + str(self.number))
             case '2':
-                line2.set(str(self.number))
+                line2.set('number of boxes of worker 2 is ' + str(self.number))
             case '3':
-                line3.set(str(self.number))
+                line3.set('number of boxes of worker 3 is ' + str(self.number))
             case '4':
-                line4.set(str(self.number))
+                line4.set('number of boxes of worker 4 is ' + str(self.number))
             case '5':
-                line5.set(str(self.number))
+                line5.set('number of boxes of worker 5 is ' + str(self.number))
             case '6':
-                line6.set(str(self.number))
+                line6.set('number of boxes of worker 6 is ' + str(self.number))
             case '7':
-                line7.set(str(self.number))
+                line7.set('number of boxes of worker 7 is ' + str(self.number))
             case '8':
-                line8.set(str(self.number))
+                line8.set('number of boxes of worker 8 is ' + str(self.number))
 
     def eating(self):
         global eatingWorkers
@@ -72,21 +72,21 @@ class Workers(threading.Thread):
         store.acquire()
         match self.name:
             case '1':
-                line1.set('worker 1 is putting and backing to ship')
+                line1.set('worker 1 is delivered and backing to ship')
             case '2':
-                line2.set('worker 2 is putting and backing to ship')
+                line2.set('worker 2 is delivered and backing to ship')
             case '3':
-                line3.set('worker 3 is putting and backing to ship')
+                line3.set('worker 3 is delivered and backing to ship')
             case '4':
-                line4.set('worker 4 is putting and backing to ship')
+                line4.set('worker 4 is delivered and backing to ship')
             case '5':
-                line5.set('worker 5 is putting and backing to ship')
+                line5.set('worker 5 is delivered and backing to ship')
             case '6':
-                line6.set('worker 6 is putting and backing to ship')
+                line6.set('worker 6 is delivered and backing to ship')
             case '7':
-                line7.set('worker 7 is putting and backing to ship')
+                line7.set('worker 7 is delivered and backing to ship')
             case '8':
-                line8.set('worker 8 is putting and backing to ship')
+                line8.set('worker 8 is delivered and backing to ship')
         store.release()
         self.number += 3
         time.sleep(self.speed)
@@ -101,15 +101,15 @@ class Workers(threading.Thread):
             case '3':
                 line3.set('worker 3 is loaded and going to store')
             case '4':
-                line4.set('worker 4 is loading and going to store')
+                line4.set('worker 4 is loaded and going to store')
             case '5':
-                line5.set('worker 5 is loading and going to store')
+                line5.set('worker 5 is loaded and going to store')
             case '6':
-                line6.set('worker 6 is loading and going to store')
+                line6.set('worker 6 is loaded and going to store')
             case '7':
-                line7.set('worker 7 is loading and going to store')
+                line7.set('worker 7 is loaded and going to store')
             case '8':
-                line8.set('worker 8 is loading and going to store')
+                line8.set('worker 8 is loaded and going to store')
         ship.release()
         time.sleep(self.speed)
 

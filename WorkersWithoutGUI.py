@@ -37,7 +37,7 @@ class Workers(threading.Thread):
 
     def put(self):
         store.acquire()
-        print('worker ' + self.name + ' is putting.')
+        print('worker ' + self.name + ' is delivering.')
         store.release()
         self.number += 3
         print('worker ' + self.name + ' is backing to ship.')
