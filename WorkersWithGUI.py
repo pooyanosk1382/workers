@@ -121,7 +121,6 @@ root.geometry("800x800")
 root.iconphoto(True, tk.PhotoImage(file="ship.png"))
 background_image = tk.PhotoImage(file="ship.png")
 
-# Create a label to display the background image
 background_label = tk.Label(root, image=background_image)
 background_label.place(x=0, y=0, relwidth=1, relheight=1)
 
@@ -159,7 +158,6 @@ label7 = tk.Label(root, image=image7, textvariable=line7, font=("Arial", 18), co
 label7.pack(pady=10)
 label8 = tk.Label(root, image=image8, textvariable=line8, font=("Arial", 18), compound="left")
 label8.pack(pady=10)
-
 
 worker1 = Workers('1', 5)
 worker2 = Workers('2', 7)
