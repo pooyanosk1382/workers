@@ -5,6 +5,7 @@ startTime = time.time()
 store = threading.RLock()
 ship = threading.RLock()
 eatingWorkers = 0
+eating = threading.Semaphore(4)
 t = 60
 
 
@@ -20,7 +21,7 @@ class Workers(threading.Thread):
         global eatingWorkers
         currentTime = time.time()
         while currentTime - startTime < t + t/16:
-            if currentTime - startTime >= t / 2 and self.eaten is False and eatingWorkers < 4:
+            if currentTime - startTime >= t / 2 and self.eaten is False and eating.acquire(blocking=False):
                 eatingWorkers += 1
                 self.eating()
             self.loading()
@@ -34,6 +35,7 @@ class Workers(threading.Thread):
         print('There are ' + str(eatingWorkers) + ' workers that are eating')
         time.sleep(t/16)
         eatingWorkers -= 1
+        eating.release()
 
     def put(self):
         store.acquire()
