@@ -23,6 +23,7 @@ class Workers(threading.Thread):
         currentTime = time.time()
         while currentTime - startTime < t + t/16:
             if currentTime - startTime >= t / 2 and self.eaten is False and eatingWorkers < 4:
+                eatingWorkers += 1
                 self.eating()
             self.loading()
             self.put()
@@ -47,7 +48,6 @@ class Workers(threading.Thread):
 
     def eating(self):
         global eatingWorkers
-        eatingWorkers += 1
         self.eaten = True
         match self.name:
             case '1':
